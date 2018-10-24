@@ -1,0 +1,23 @@
+{
+  "name": "learningwebsite",
+  "version": "1.0.0",
+  "description": "learningwebsite",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JessicaTHH/learningwebsite.git"
+  },
+  "author": "Jessica",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JessicaTHH/learningwebsite/issues"
+  },
+  "homepage": "https://github.com/JessicaTHH/learningwebsite#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  }
+}

@@ -10,5 +10,5 @@ app.use(require('body-parser')());
 var server = http.createServer(app);
 
 server.listen(4444, () => {
-    console.log('server listan 4444')
+    console.log('server listen 4444')
 })

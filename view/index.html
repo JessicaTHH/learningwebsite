@@ -3,12 +3,58 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+     <title>LearningWebsite</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
 </head>
 <body>
-    <p>Hello World</p>
+   <h1>Learn the color</h1>
+
+	<div id="column1"></div>
+	<div id="column2"></div>
+	<div id="score"></div>
+
+
+    <script type="text/babel">
+
+    class Column extends React.Component {
+    render() {
+        return (<div class="column1">column1</div>);
+        }
+    }
+     class Column2 extends React.Component {
+    render() {
+        return (<div class="column2">column2 is grey</div>);
+        }
+    }
+     class Score extends React.Component {
+    render() {
+        return (<div class="footer">score: </div>);
+        }
+    }
+   
+
+
+    ReactDOM.render(
+        <Column />,
+        document.getElementById('column1')
+    );
+    ReactDOM.render(
+        <Column2 />,
+        document.getElementById('column2')
+    );
+     ReactDOM.render(
+        <Score />,
+        document.getElementById('score')
+    );
+
+    </script>
+
 </body>
 </html>

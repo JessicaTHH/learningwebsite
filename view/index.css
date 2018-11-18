@@ -1,8 +1,6 @@
 body {
     background-color: #ffff;
 }
-
-
 h1 {
     color: #82A60C;
     background-color: #ECFABE;
@@ -13,6 +11,7 @@ h1 {
     padding: 7px;
     border-radius: 5px
 }
+
 h3 {
     color: #AED91E;
     background-color: #ECFABE;
@@ -23,33 +22,23 @@ h3 {
     padding: 7px;
     border-radius: 5px
 }
-.column1 {
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-  padding: 10px;
-  height: 100px;
-  background-color: #ECFABE; 
-  border: 5px solid green;
+
+button {
+  color: #ECFABE;
+  background-color: #AED91E;
+  margin:0 auto;
+ 
 }
-.column2 {
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-  padding: 10px;
-  height: 100px;
-  background-color:#ECFABE; 
-  border: 5px solid grey;
+.square{
+  width:30%;
+  background-color: green;
+  padding-bottom: 30%;
+  float:left;
+  margin:1.66%;
+  border-radius: 50%;
 }
-.footer {
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-  background-color: #f1f1f1;
-  padding: 10px;
-  text-align: left;
-  font-size:14px;
-  font-weight:bold;
-  border: 5px solid grey;
-  border-top:none;
+#container{
+  margin: 0 auto;
+  max-width:600px;
 }
-.space{
-margin:25px;
-}
+

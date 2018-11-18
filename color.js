@@ -13,8 +13,11 @@ function color(callback){
             db.close();
         } else {
             console.log("Connection established.");
-            db.close();
-        	
+            var collection=db.collection('colorCollection');
+            collection.find({}).toArray(function(err,result){
+            	callback(result);
+            	db.close();
+            })
 		};
     })
 }

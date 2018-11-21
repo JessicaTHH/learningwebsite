@@ -4,7 +4,7 @@ var http = require('http');
 var path = require('path');
 var app = express();
 
-app.use(express.static(path.join(__dirname, '/routes')));
+app.use(express.static(path.join(__dirname, '/view')));
 app.use(require('body-parser')());
 
 var server = http.createServer(app);
@@ -34,7 +34,7 @@ app.get('/coloredobject', function(req,res) {
     res.json(coloredObject.coloredObject());
 });
 
-app.get('/quiz', function(req,res) {
+app.post('/quiz', function(req,res) {
     console.log("Someone has request to quiz");
     const colorQuiz = require('./routes/quiz');
     res.json(colorQuiz.colorQuiz());
@@ -42,5 +42,5 @@ app.get('/quiz', function(req,res) {
 
 app.get('*', function(req, res) {
 	console.log("Someone has request to unknown route");
-    res.send("No no no, page not found!!");
+    res.send("No no no, this is not what you want!");
 });

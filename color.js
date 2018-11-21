@@ -1,24 +1,26 @@
-module.exports='color';
 
 const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb://localhost:27017/colorCollection ';
-const client = new MongoClient(url,{ useNewUrlParser: true });
-
-
+const url = 'mongodb://localhost:27017';
+const dbName= 'colorCollection';
 
 function color(callback){
-	client.connect(function(err,db) {
+	MongoClient.connect(url,{ useNewUrlParser: true },function(err,client) {
 	if (err) {
             console.log("Unable to connect to DB.", err);
-            db.close();
+                client.close();
         } else {
             console.log("Connection established.");
-            var collection=db.collection('colorCollection');
-            collection.find({}).toArray(function(err,result){
-            	callback(result);
-            	db.close();
-            })
-		};
-    })
-}
+            const db=client.db(dbName);
+            const collection='colorCollection';
+            var clr=db.collection(collection);
+            clr.findOne({},function(err, result) {
+                        console.log(result);  
+                client.close();
+		     });
+        };
+    });
+};
 
+
+
+module.exports= { color };

@@ -13,13 +13,48 @@ var contentNode = document.getElementById('contents');
 var LearnColor = function (_React$Component) {
   _inherits(LearnColor, _React$Component);
 
-  function LearnColor() {
+  function LearnColor(props) {
     _classCallCheck(this, LearnColor);
 
-    return _possibleConstructorReturn(this, (LearnColor.__proto__ || Object.getPrototypeOf(LearnColor)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (LearnColor.__proto__ || Object.getPrototypeOf(LearnColor)).call(this, props));
+
+    _this.state = {
+      colors: ["rgb(255, 0, 0)", "rgb(255, 255, 0)", "rgb(255, 255, 255)", "rgb(0, 230, 0)", "rgb(0, 0, 255)", "rgb(0, 0, 0)"],
+      selectedColor: '',
+      names: ["red", "yellow", "white", "green", "blue", "black"],
+      selectedColorName: ''
+    };
+    _this.handleClick = _this.handleClick.bind(_this);
+    return _this;
   }
 
   _createClass(LearnColor, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this._getRandomColor();
+      console.log('componentDidMount');
+    }
+  }, {
+    key: "handleClick",
+    value: function handleClick(e) {
+      e.preventDefault();
+      console.log("you clicked");
+      this._getRandomColor();
+    }
+  }, {
+    key: "_getRandomColor",
+    value: function _getRandomColor() {
+      console.log('getRamdomColor');
+      var random = Math.floor(Math.random() * this.state.colors.length);
+      var item = this.state.colors[random];
+      var itemName = this.state.names[random];
+      this.setState({
+        selectedColor: item,
+        selectedColorName: itemName
+      });
+      console.log('getRamdomColor Done ' + item + " " + itemName);
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement(
@@ -27,13 +62,16 @@ var LearnColor = function (_React$Component) {
         null,
         React.createElement(
           "h1",
-          null,
-          "Learn the color"
+          { style: { backgroundColor: this.state.selectedColor } },
+          "Learn color ",
+          this.state.selectedColorName
         ),
+        React.createElement("div", { style: { backgroundColor: this.state.selectedColor }, className: "circle", onClick: this.handleClick }),
         React.createElement(
           "div",
-          { id: "container" },
-          React.createElement("div", { className: "square" })
+          { style: { color: this.state.selectedColor },
+            className: "showName" },
+          this.state.selectedColorName
         )
       );
     }

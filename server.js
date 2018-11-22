@@ -4,7 +4,7 @@ var http = require('http');
 var path = require('path');
 var app = express();
 
-app.use(express.static(path.join(__dirname, '/view')));
+app.use(express.static(path.join(__dirname, '/client/view')));
 app.use(require('body-parser')());
 
 var server = http.createServer(app);
@@ -42,5 +42,5 @@ app.post('/quiz', function(req,res) {
 
 app.get('*', function(req, res) {
 	console.log("Someone has request to unknown route");
-     res.sendFile(path.join(__dirname, 'view/index.html'));
+     res.sendFile(path.join(__dirname, 'client/view/index.html'));
 });

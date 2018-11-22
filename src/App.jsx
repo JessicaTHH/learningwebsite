@@ -48,7 +48,7 @@ render(){
     <div>
          <h1 style={{backgroundColor: this.state.selectedColor}}>
           Learn color {this.state.selectedColorName}</h1>
-          <div style={{backgroundColor: this.state.selectedColor}}                className="circle" onClick={this.handleClick}></div>
+          <div style={{backgroundColor: this.state.selectedColor}}className="circle" onClick={this.handleClick}></div>
          <div style={{color: this.state.selectedColor}}
          className="showName">{this.state.selectedColorName}</div>
       </div>

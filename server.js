@@ -42,5 +42,5 @@ app.post('/quiz', function(req,res) {
 
 app.get('*', function(req, res) {
 	console.log("Someone has request to unknown route");
-    res.send("No no no, this is not what you want!");
+     res.sendFile(path.join(__dirname, 'view/index.html'));
 });

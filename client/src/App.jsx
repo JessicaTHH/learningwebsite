@@ -4,44 +4,39 @@ class LearnColor extends React.Component {
   constructor(props) {
   super(props);
   this.state = {
-    colors: [
-      "rgb(255, 0, 0)",
-      "rgb(255, 255, 0)",
-      "rgb(255, 255, 255)",
-      "rgb(0, 230, 0)",
-      "rgb(0, 0, 255)",
-      "rgb(0, 0, 0)",
-    ],
     selectedColor: '',
-    names: ["red","yellow","white","green","blue","black"],
     selectedColorName: '',
   };
     this.handleClick=this.handleClick.bind(this);
+    this.getColor=this.getColor.bind(this);
 }
   
 componentDidMount() {
-  this._getRandomColor();
+  this.getColor();
   console.log('componentDidMount');
-  
 }
 
 handleClick(e){
   e.preventDefault();
   console.log("you clicked");
-  this._getRandomColor();
+  this.getColor();
 }
 
-_getRandomColor(){
-  console.log('getRamdomColor');
-  var random=(Math.floor(Math.random()*this.state.colors.length));
-  var item = this.state.colors[random];
-  var itemName=this.state.names[random];
-  this.setState({
-    selectedColor: item,
-    selectedColorName: itemName,
-  }) ;
-  console.log('getRamdomColor Done '+item+" "+itemName);
-}
+getColor() {
+    axios.get('/color')
+    .then(response => {
+      console.log("im here")
+      console.log(response)
+      this.setState({ 
+        selectedColor: response.data.color,
+        selectedColorName: response.data.names,
+      });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+    console.log('Axios done')
+  }
 
 render(){
   return(

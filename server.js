@@ -14,18 +14,12 @@ server.listen(4444, () => {
 })
 
 app.get('/pop', function(req, res) {
-	console.log("Someone has request to pop");
+    console.log("Someone has request to pop");
     var testObject = {
         "AppName": "MongoPop",
         "Version": 1.0
     }
     res.json(testObject);
-});
-
-app.get('/color', function(req,res) {
-	console.log("Someone has request to color");
-	const color = require('./routes/color');
-	res.json(color.color());
 });
 
 app.get('/coloredobject', function(req,res) {
@@ -34,13 +28,27 @@ app.get('/coloredobject', function(req,res) {
     res.json(coloredObject.coloredObject());
 });
 
-app.post('/quiz', function(req,res) {
-    console.log("Someone has request to quiz");
-    const colorQuiz = require('./routes/quiz');
-    res.json(colorQuiz.colorQuiz());
+app.get('/color', function(req,res) {
+    console.log("Someone has request to color");
+    const color = require('./routes/color');
+    console.log('hello from backend')
+    color.color(res);
 });
 
-app.get('*', function(req, res) {
-	console.log("Someone has request to unknown route");
+
+app.get('/color/learncolor', function(req, res) {
+    console.log("Someone has request to learncolor");
      res.sendFile(path.join(__dirname, 'client/view/index.html'));
 });
+
+// app.post('/quiz', function(req,res) {
+//     console.log("Someone has request to quiz");
+//     const colorQuiz = require('./routes/quiz');
+//     res.sendFile(path.join(__dirname, 'client/view/index.html'));
+// });
+
+// app.get('*', function(req, res) {
+//  console.log("Someone has request to all");
+//      res.sendFile(path.join(__dirname, 'client/view/index.html'));
+// });
+

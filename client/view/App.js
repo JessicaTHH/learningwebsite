@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -19,58 +19,61 @@ var LearnColor = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (LearnColor.__proto__ || Object.getPrototypeOf(LearnColor)).call(this, props));
 
     _this.state = {
-      colors: ["rgb(255, 0, 0)", "rgb(255, 255, 0)", "rgb(255, 255, 255)", "rgb(0, 230, 0)", "rgb(0, 0, 255)", "rgb(0, 0, 0)"],
       selectedColor: '',
-      names: ["red", "yellow", "white", "green", "blue", "black"],
       selectedColorName: ''
     };
     _this.handleClick = _this.handleClick.bind(_this);
+    _this.getColor = _this.getColor.bind(_this);
     return _this;
   }
 
   _createClass(LearnColor, [{
-    key: "componentDidMount",
+    key: 'componentDidMount',
     value: function componentDidMount() {
-      this._getRandomColor();
+      this.getColor();
       console.log('componentDidMount');
     }
   }, {
-    key: "handleClick",
+    key: 'handleClick',
     value: function handleClick(e) {
       e.preventDefault();
       console.log("you clicked");
-      this._getRandomColor();
+      this.getColor();
     }
   }, {
-    key: "_getRandomColor",
-    value: function _getRandomColor() {
-      console.log('getRamdomColor');
-      var random = Math.floor(Math.random() * this.state.colors.length);
-      var item = this.state.colors[random];
-      var itemName = this.state.names[random];
-      this.setState({
-        selectedColor: item,
-        selectedColorName: itemName
+    key: 'getColor',
+    value: function getColor() {
+      var _this2 = this;
+
+      axios.get('/color').then(function (response) {
+        console.log("im here");
+        console.log(response);
+        _this2.setState({
+          selectedColor: response.data.color,
+          selectedColorName: response.data.names
+        });
+      }).catch(function (error) {
+        console.log(error);
       });
-      console.log('getRamdomColor Done ' + item + " " + itemName);
+      console.log('Axios done');
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render() {
       return React.createElement(
-        "div",
+        'div',
         null,
         React.createElement(
-          "h1",
+          'h1',
           { style: { backgroundColor: this.state.selectedColor } },
-          "Learn color ",
+          'Learn color ',
           this.state.selectedColorName
         ),
-        React.createElement("div", { style: { backgroundColor: this.state.selectedColor }, className: "circle", onClick: this.handleClick }),
+        React.createElement('div', { style: { backgroundColor: this.state.selectedColor }, className: 'circle', onClick: this.handleClick }),
         React.createElement(
-          "div",
+          'div',
           { style: { color: this.state.selectedColor },
-            className: "showName" },
+            className: 'showName' },
           this.state.selectedColorName
         )
       );

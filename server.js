@@ -41,14 +41,8 @@ app.get('/color/learncolor', function(req, res) {
      res.sendFile(path.join(__dirname, 'client/view/index.html'));
 });
 
-// app.post('/quiz', function(req,res) {
-//     console.log("Someone has request to quiz");
-//     const colorQuiz = require('./routes/quiz');
-//     res.sendFile(path.join(__dirname, 'client/view/index.html'));
-// });
-
-// app.get('*', function(req, res) {
-//  console.log("Someone has request to all");
-//      res.sendFile(path.join(__dirname, 'client/view/index.html'));
-// });
+app.get('/color/colorGame', function(req, res) {
+    console.log("Someone has request to colorGame");
+     res.sendFile(path.join(__dirname, 'client/view/colorGame.html'));
+});
 

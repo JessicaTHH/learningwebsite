@@ -1,9 +1,8 @@
-
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
 const dbName= 'colorCollection';
 
-function colorQuiz(callback){
+function selectColors(res){
     MongoClient.connect(url,{ useNewUrlParser: true },function(err,client) {
     if (err) {
             console.log("Unable to connect to DB.", err);
@@ -13,14 +12,17 @@ function colorQuiz(callback){
             const db=client.db(dbName);
             const collection='colorCollection';
             var clr=db.collection(collection);
-            clr.findOne({},function(err, result) {
-                        console.log(result);  
+            var random=(Math.floor(Math.random() * 9) + 1);
+            clr.findOne({_id:random},function(err, result) {
+                console.log('in mongo')
+                console.log(result);
+                res.json(result);
                 client.close();
-             });
+            });
         };
     });
 };
 
 
 
-module.exports= { colorQuiz };
+module.exports= { selectColors };
